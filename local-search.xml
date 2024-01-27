@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>给博客添加每日60秒读懂世界图文</title>
+    <link href="/2024/01/27/add-day60s/"/>
+    <url>/2024/01/27/add-day60s/</url>
+    
+    <content type="html"><![CDATA[<h1 id="给你的博客添加每日60秒读懂世界新闻"><a href="#给你的博客添加每日60秒读懂世界新闻" class="headerlink" title="给你的博客添加每日60秒读懂世界新闻"></a>给你的博客添加每日60秒读懂世界新闻</h1><p>记录一下啊方便后续的维护修改</p><p>步骤是：</p><ol><li><p>gitbash输入指令<code>hexo new page &quot;days60s&quot;</code></p><blockquote><p>创建一个自定义页面</p></blockquote></li><li><p>修改主题配置文件：<code>_config.fluid.yml</code></p><p>添加了一下内容：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 在导航栏上添加按钮</span><br><span class="hljs-attr">menu:</span><br>    <span class="hljs-bullet">-</span> &#123; <span class="hljs-attr">key:</span> <span class="hljs-string">&quot;   每日60秒&quot;</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">&quot;/day60s/&quot;</span>, <span class="hljs-attr">icon:</span> <span class="hljs-string">&quot;iconfont icon-link-fill&quot;</span> &#125;<br></code></pre></td></tr></table></figure><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># day60s页面的相关配置</span><br><span class="hljs-comment"># 每日60秒</span><br><span class="hljs-attr">day60s:</span><br> <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br> <span class="hljs-attr">banner_img:</span> <span class="hljs-string">https://cdn.jsdelivr.net/gh/wechatid/image/blog/bg.jpg</span><br> <span class="hljs-attr">banner_img_height:</span> <span class="hljs-number">60</span><br> <span class="hljs-attr">banner_mask_alpha:</span> <span class="hljs-number">0.3</span><br></code></pre></td></tr></table></figure></li><li><p>配置day60s页面内容：</p><ol><li><p>打开文件<code>\source\day60s\index.md</code></p></li><li><p>写入以下信息：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: 每日60秒读懂世界<br>layout: day60s<br><span class="hljs-section">date: 2024-01-27 17:35:13</span><br><span class="hljs-section">---</span><br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://api.03c3.cn/api/zb&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: block; margin: 0 auto; max-width: 80%; height: auto;&quot;</span>&gt;</span></span><br><br>数据来源于：每日60s读懂世界<br><br>接口来源于：[<span class="hljs-string">云综合- 聚合API服务平台 (03c3.cn)</span>](<span class="hljs-link">https://api.03c3.cn/</span>)<br></code></pre></td></tr></table></figure></li></ol></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>博客</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Python爬虫获取空气质量数据</title>
     <link href="/2024/01/26/Python-crawler-air-AQI/"/>
     <url>/2024/01/26/Python-crawler-air-AQI/</url>
