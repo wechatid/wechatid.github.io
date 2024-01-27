@@ -23,14 +23,14 @@
 <meta property="og:site_name" content="Imscad&#39;s Blog">
 <meta property="og:description" content="爬取网站小说并保存到本地の学习记录前言本次学习级别为新手村学习，简单易懂，特别适合刚学习python的练手项目。  请注意，本人提供的信息仅用于个人学习目的，并且不涉及公开或分享任何目标网站的相关链接或信息。爬取网站内容应遵守适用的法律法规、知识产权和隐私保护规定。在未获得授权的情况下，不得非法获取、使用或传播他人的数据、信息或资源。爬取操作应遵循合理的频率和并发量，以避免对目标网站造成过度负荷或">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/wechatid/image/blog/202401141148360.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/wechatid/image/blog/202401141148360.png">
 <meta property="article:published_time" content="2024-01-14T03:16:43.000Z">
-<meta property="article:modified_time" content="2024-01-22T07:56:12.934Z">
+<meta property="article:modified_time" content="2024-01-27T13:37:28.557Z">
 <meta property="article:author" content="Imscamd">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/wechatid/image/blog/202401141148360.png">
+<meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/wechatid/image/blog/202401141148360.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -213,7 +213,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://cdn.jsdelivr.net/gh/wechatid/image/blog/202401141148360.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://gcore.jsdelivr.net/gh/wechatid/image/blog/202401141148360.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -324,7 +324,7 @@
 <li>time</li>
 </ul>
 <h2 id="一、构建获取小说的方法"><a href="#一、构建获取小说的方法" class="headerlink" title="一、构建获取小说的方法"></a>一、构建获取小说的方法</h2><p>打开网页，F12对小说页面内容进行分析。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/wechatid/image/blog/202401141551974.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/202401141551974.png" srcset="/img/loading.gif" lazyload></p>
 <p>发现小说内容都在一个id为<code>chaptercontent</code>的div标签里面，并且用<code>&lt;br&gt;</code>标签分行保存，因此我们只需要获取<code>&lt;br&gt;</code>里面的内容就行了。但一章小说分了好多页，获取下一章按钮的<code>href </code>值就能获取下一页的内容了。</p>
 <blockquote>
 <p>代码如下</p>
@@ -344,7 +344,7 @@
 <ol>
 <li><p>获取小说名字</p>
 <p>按F12，查看网页元素结构、对网页结果进行解析。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/wechatid/image/blog/image-20240114122500513.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/image-20240114122500513.png" srcset="/img/loading.gif" lazyload></p>
 <p>如图，不难找到存放小说名称的标签<code>dt</code>、属性<code>class</code>，复制链接url、用python获取一下小说名称。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">headers = &#123;<br>        <span class="hljs-string">&#x27;user-agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36&#x27;</span>,<br>    &#125;<br><br>response = requests.get(url, headers=headers)<br>html = response.text<br>soup = BeautifulSoup(html, <span class="hljs-string">&#x27;html.parser&#x27;</span>)<br>name = soup.find(<span class="hljs-string">&#x27;dt&#x27;</span>, class_=<span class="hljs-string">&#x27;name&#x27;</span>).text.strip()<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;小说名称：<span class="hljs-subst">&#123;name&#125;</span>&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
@@ -352,7 +352,7 @@
 </li>
 <li><p>获取章节的链接</p>
 <p>如图，章节链接都存放在属性为<code>book_last</code>的div标签里,但是这里有两个同样的标签，需要获取第二个。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/wechatid/image/blog/pc726.png" srcset="/img/loading.gif" lazyload alt="image-20240114150028146"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/pc726.png" srcset="/img/loading.gif" lazyload alt="image-20240114150028146"></p>
 </li>
 <li><p>获取章节名称</p>
 <p>如上图，章节名称存放在标签<code>&lt;a&gt; &lt;a/&gt;</code>之间，在获取章节链接的同时可以同时获取章节名称</p>
@@ -362,8 +362,8 @@
 <table>
 <thead>
 <tr>
-<th><img src="https://cdn.jsdelivr.net/gh/wechatid/image/blog/pc21.png" srcset="/img/loading.gif" lazyload alt="原始链接"></th>
-<th><img src="https://cdn.jsdelivr.net/gh/wechatid/image/blog/pc22.png" srcset="/img/loading.gif" lazyload alt="image-20240114125122786"></th>
+<th><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/pc21.png" srcset="/img/loading.gif" lazyload alt="原始链接"></th>
+<th><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/pc22.png" srcset="/img/loading.gif" lazyload alt="image-20240114125122786"></th>
 </tr>
 </thead>
 </table>
@@ -374,10 +374,10 @@
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><span class="hljs-keyword">import</span> get_text<br><br>url = <span class="hljs-string">&#x27;https://.com/book_19922/&#x27;</span><br><br><span class="hljs-comment"># 获取域名</span><br>index = url.find(<span class="hljs-string">&#x27;/b&#x27;</span>)<br>zhangjie_url = url[url.find(<span class="hljs-string">&#x27;/b&#x27;</span>):]<br><span class="hljs-keyword">if</span> index != -<span class="hljs-number">1</span>:<br>    web = url[:index]<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;未找到 &#x27;ch&#x27;&quot;</span>)<br><br>headers = &#123;<br>    <span class="hljs-string">&#x27;user-agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36&#x27;</span>,<br>&#125;<br><br><span class="hljs-comment"># 发送请求获取小说首页内容</span><br>response = requests.get(url, headers=headers)<br>html = response.text<br>soup = BeautifulSoup(html, <span class="hljs-string">&#x27;html.parser&#x27;</span>)<br><br><span class="hljs-comment"># 获取小说名称</span><br>name = soup.find(<span class="hljs-string">&#x27;dt&#x27;</span>, class_=<span class="hljs-string">&#x27;name&#x27;</span>).text.strip()<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;小说名称：<span class="hljs-subst">&#123;name&#125;</span>&#x27;</span>)<br><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>    <span class="hljs-comment"># 拼接章节url</span><br>    url_line = web + zhangjie_url<br><br>    <span class="hljs-comment"># 发送请求获取章节内容页</span><br>    response_1 = requests.get(url_line, headers=headers)<br>    html_1 = response_1.text<br>    soup_1 = BeautifulSoup(html_1, <span class="hljs-string">&#x27;html.parser&#x27;</span>)<br>    zhangjie_url = soup_1.find(<span class="hljs-string">&#x27;a&#x27;</span>, class_=<span class="hljs-string">&quot;onclick&quot;</span>).get(<span class="hljs-string">&#x27;href&#x27;</span>)<br><br>    <span class="hljs-comment"># 使用选择器定位符合条件的元素</span><br>    element = soup_1.select_one(<span class="hljs-string">&#x27;.book_last dl dt:-soup-contains(&quot;最新章节列表&quot;)&#x27;</span>)<br><br>    link = <span class="hljs-literal">None</span><br>    text = <span class="hljs-literal">None</span><br><br>    <span class="hljs-comment"># 遍历获取标签里面的内容</span><br>    <span class="hljs-keyword">if</span> element:<br>        parent_element = element.parent  <span class="hljs-comment"># 获取父级元素 dl</span><br>        <span class="hljs-keyword">for</span> tag <span class="hljs-keyword">in</span> parent_element.find_all(<span class="hljs-string">&#x27;dd&#x27;</span>):<br>            <span class="hljs-keyword">if</span> tag.name == <span class="hljs-string">&#x27;dd&#x27;</span> <span class="hljs-keyword">and</span> tag.a:<br>                link = tag.a.get(<span class="hljs-string">&#x27;href&#x27;</span>)  <span class="hljs-comment"># 获取 href 属性的值</span><br>                text = tag.a.text.strip()  <span class="hljs-comment"># 获取文本内容</span><br>                text_url = web + link<br>                <span class="hljs-comment"># 传递小说页过去</span><br>                downld = get_text.get_text(text_url, name, text)<br>                <span class="hljs-keyword">if</span> downld:<br>                    time.sleep(<span class="hljs-number">0.5</span>)<br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;text&#125;</span>下载失败，请检查&quot;</span>)<br><br>    <span class="hljs-keyword">if</span> link <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">and</span> text <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;小说《<span class="hljs-subst">&#123;name&#125;</span>》，下载完成！&quot;</span>)<br>        <span class="hljs-keyword">break</span><br>    time.sleep(<span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
 
-<h2 id="三、整体逻辑"><a href="#三、整体逻辑" class="headerlink" title="三、整体逻辑"></a>三、整体逻辑</h2><p>在已经获得<strong>小说目录链接</strong><sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="![目录页面](https://cdn.jsdelivr.net/gh/wechatid/image/blog/pc1.png)">[1]</span></a></sup>的前提下,创建一个循环：获取小说名字，获取目录页的章节链接，获取章节名字。然后把章节链接，小说名字，章节名字传递到获取的小说方法<code>get_text</code>里去下载章节内容，下载成功则继续下一遍循环，错误则结束运行。</p>
+<h2 id="三、整体逻辑"><a href="#三、整体逻辑" class="headerlink" title="三、整体逻辑"></a>三、整体逻辑</h2><p>在已经获得<strong>小说目录链接</strong><sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="![目录页面](https://gcore.jsdelivr.net/gh/wechatid/image/blog/pc1.png)">[1]</span></a></sup>的前提下,创建一个循环：获取小说名字，获取目录页的章节链接，获取章节名字。然后把章节链接，小说名字，章节名字传递到获取的小说方法<code>get_text</code>里去下载章节内容，下载成功则继续下一遍循环，错误则结束运行。</p>
 </li>
 </ol>
-<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><img src="https://cdn.jsdelivr.net/gh/wechatid/image/blog/pc1.png" srcset="/img/loading.gif" lazyload alt="目录页面">
+<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/pc1.png" srcset="/img/loading.gif" lazyload alt="目录页面">
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
                 
               </div>
