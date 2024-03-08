@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>安装SQL数据库和金蝶软件记录</title>
+    <link href="/2024/03/06/Install-SQL-Kingdee/"/>
+    <url>/2024/03/06/Install-SQL-Kingdee/</url>
+    
+    <content type="html"><![CDATA[<h1 id="安装SQL"><a href="#安装SQL" class="headerlink" title="安装SQL"></a>安装SQL</h1><ol><li><p>启动windows功能。</p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/SQL1.png" alt="image-20240306184352024"></p></li><li><p>Windows用户必须拥有全部管理权限，即管理员账户。</p></li><li><p>解压“SQL Server 2016.rar”压缩包。</p></li><li><p>以管理员身份运行安装程序。</p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/SQL2.png" alt="image-20240306185726233"></p></li><li><p>点击安装，选择“全新 SQL Server独立安装…”</p><blockquote><p>安装报错为：</p><p>行1 位置50时，则代表</p><p>与windows系统不兼容，</p><p>需要重新安装windows</p><p>系统。</p></blockquote></li><li><p>点击下一步。</p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/SQL3.png" alt="image-20240306190347845"></p></li><li><p>功能选择，需要勾选的功能。</p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/SQL4.png" alt="image-20240306190659055"></p><p>本次安装的2016版本中，没有4.管理工具，所以就不管它。</p></li><li><p>修改实例根目录，修改为<code>D:\SQL</code>。</p></li><li><p><a id="password">数据库引擎配置。</a></p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/SQL5png" alt="image-20240306193750111"></p></li><li><p>下一步，等待安装完成。</p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/SQL6.png" alt="image-20240306194621143"></p></li></ol><h1 id="金蝶k3-cloud安装"><a href="#金蝶k3-cloud安装" class="headerlink" title="金蝶k3&#x2F;cloud安装"></a>金蝶k3&#x2F;cloud安装</h1><ol><li><p>解压文件<code>修复版金蝶云V7.1安装包.zip</code>。</p></li><li><p>以管理员身份运行<code>SETUP.exe</code>程序。</p></li><li><p>功能选择</p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/kingdee1.png" alt="image-20240306195841820"></p></li><li><p>环境检测。</p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/kingdee2.png" alt="image-20240306200509230"></p><p>可以自动修复，也可以在windows系统更新里自行安装。</p></li><li><p>安装完成。</p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/kingdee3.png" alt="image-20240306202446377"></p></li></ol><h2 id="金蝶的账套配置"><a href="#金蝶的账套配置" class="headerlink" title="金蝶的账套配置"></a>金蝶的账套配置</h2><ol><li><p>在目录<code>D:\Kingdee\odp_Net</code>下找到<code>install.bat</code>,以管理员身份运行。</p></li><li><p>重启IIS：在‘服务’中找到<code>IIS 管理服务</code>或者<code>IISADMIN</code>点击重新启动。</p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/kingdee4.png" alt="image-20240306204956096"></p></li><li><p>登录<code>http://localhost:8000</code>这个地址，创建管理中心数据库。</p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/kingdee5.png" alt="image-20240306210023369"></p><p>账号是”sa“</p><p>密码则是<a href="#password">数据库引擎配置</a>时设置的密码</p><p>创建完成之后重启IIS</p></li><li><p>点击完成之后，会跳转页面安装Slivelight。地址为<code>http://localhost:8000/Silverlight/mc.aspx</code></p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/kingdee6.png" alt="image-20240306211305649"></p><p>会下载一个<code>Silverlight_x64.exe</code>程序，运行它。</p></li><li><p>点击立即安装，安装成功后，回到浏览器刷新页面。</p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/kingdee7.png" alt="image-20240306211727581"></p><ul><li><p>安装成功之后，返回浏览器刷新页面。<strong>若仍然提示<code>&quot;要观看此内容，请安装&quot;</code>，</strong>这是因为silverlight仅支持IE浏览器，而IE浏览器已经停止更新了。</p></li><li><blockquote><p>Edge浏览器解决办法：点击右上角三个点-设置-默认浏览器</p><p>配置如下图</p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/kingdee8.png" alt="image-20240306213940116"></p></blockquote></li></ul></li><li><p>成功打开登录页面后，输入<strong>金蝶云初始密码为888888</strong>，登录记得勾选200mb配额。</p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/kingdee112.png" alt="image-20240306214943429"></p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/kingdee9.png" alt="image-20240306214400011"></p></li><li><p>金蝶套账数据中心的创建</p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/kingdee10.png" alt="image-20240306214658620"></p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/kingdee113.png" alt="image-20240306215959746"></p><p><img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/kingdee114.png" alt="image-20240306220127878"></p></li></ol><h2 id="license的导入"><a href="#license的导入" class="headerlink" title="license的导入"></a>license的导入</h2><p> 略</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>生产运作与管理</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>生产运作与管理</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>用python创建运动步数修改api</title>
     <link href="/2024/03/05/misep-for-FastApi/"/>
     <url>/2024/03/05/misep-for-FastApi/</url>

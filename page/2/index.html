@@ -17,8 +17,8 @@
   <meta name="keywords" content="">
   
     <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="https://wechatid.github.io/archives/2024/03/index.html">
+<meta property="og:title" content="Imscad&#39;s Blog">
+<meta property="og:url" content="https://wechatid.github.io/page/2/index.html">
 <meta property="og:site_name" content="Imscad&#39;s Blog">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Imscamd">
@@ -28,7 +28,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>归档 - Imscad&#39;s Blog</title>
+  <title>Imscad&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -87,7 +87,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 100vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -205,13 +205,17 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="归档"></span>
+            <span id="subtitle" data-typed-text="我欲穿花寻路，直入白云深处，浩气展虹霓。"></span>
           
         </div>
 
         
       </div>
 
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
       
     </div>
   </div>
@@ -225,36 +229,88 @@
     
       <div class="container nopadding-x-md">
         <div id="board"
-          >
+          style="margin-top: 0">
           
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 11 篇文章</p>
-  <hr>
-  
-  
+
+  <div class="row mx-auto index-card">
     
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/01/12/blog_build/" target="_self">
+          <img src="https://gcore.jsdelivr.net/gh/wechatid/image/blog/202401120852183.jpg" srcset="/img/loading.gif" lazyload alt="关于初期建博的一些说明">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/12/blog_build/" target="_self">
+          关于初期建博的一些说明
+        </a>
+      </h2>
+
       
-      <p class="h5">2024</p>
-    
-    <a href="/2024/03/06/Install-SQL-Kingdee/" class="list-group-item list-group-item-action">
-      <time>03-06</time>
-      <div class="list-group-item-title">安装SQL数据库和金蝶软件记录</div>
-    </a>
+      <a class="index-excerpt " href="/2024/01/12/blog_build/" target="_self">
+        <div>
+          关于初期建博客的一些说明前言首先要特别鸣谢Fany Full’s Blog，以及WSKH0929的教程，对我的帮助真的很大。  GiHub + Hexo 真·从零开始搭建个人博客  【个人博客】Hexo个人博客搭建与配置详细教程 + Fluid主题 + Gitee发布_fluid文章页设置-CSDN博客    建站参考教程 （超级详细 真从零开始）  其实很早之前就想建一个存放学习笔记的一个博客，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-12 09:04" pubdate>
+              2024-01-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
   
     
-    <a href="/2024/03/05/misep-for-FastApi/" class="list-group-item list-group-item-action">
-      <time>03-05</time>
-      <div class="list-group-item-title">用python创建运动步数修改api</div>
-    </a>
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="category-chain-item">博客</a>
   
-</div>
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8D%9A%E5%AE%A2/">#博客</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
 
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </span>
+  </nav>
 
 
 
@@ -342,7 +398,37 @@
       }
       var text = subtitle.getAttribute('data-typed-text');
       
-        typing(text);
+        jQuery.ajax({
+          type: 'GET',
+          url: 'https://v1.hitokoto.cn/',
+          headers: {},
+          dataType: 'json',
+          success: function(result) {
+            var apiText;
+            if (result) {
+              var keys = 'hitokoto'.split(',');
+              if (result instanceof Array) {
+                result = result[0];
+              }
+              for (const k of keys) {
+                var value = result[k];
+                if (typeof value === 'string') {
+                  apiText = value;
+                  break;
+                } else if (value instanceof Object) {
+                  result = value;
+                }
+              }
+            }
+            apiText ? typing(apiText) : typing(text);
+          },
+          error: function(xhr, status, error) {
+            if (error) {
+              console.error('Failed to request https://v1.hitokoto.cn/:', error);
+            }
+            typing(text);
+          }
+        })
       
     })(window, document);
   </script>
