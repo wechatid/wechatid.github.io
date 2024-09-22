@@ -24,7 +24,7 @@
 <meta property="og:description" content="需求分析打开分享的链接，按F12进入开发者选项、找到了一个接口，该接口返回了该视频的大部分信息，包括封面，音乐，有水印视频的地址以及无水印的地址。通过对比发现，只有aweme id,webid,msToken,a_bogus改变，其他的值写死即可。 再通过修改某些具体值，发现msToken,a_bogus写死即可（修改之后仍然能获取） 任务需求表    步骤 变量     一 aweme_id 视">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-07T10:36:42.000Z">
-<meta property="article:modified_time" content="2024-04-07T15:00:50.386Z">
+<meta property="article:modified_time" content="2024-04-08T09:56:28.351Z">
 <meta property="article:author" content="Imscamd">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -239,7 +239,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          592 字
+          595 字
         
       </span>
     
@@ -326,7 +326,7 @@
 <h1 id="获取视频ID"><a href="#获取视频ID" class="headerlink" title="获取视频ID"></a>获取视频ID</h1><p>抖音分享获取的链接会重定向到一个新的包含了<code>ID</code>的地址，所以要通过短链接获取视频ID，代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_id</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-keyword">try</span>:<br>        response = requests.head(self.url, allow_redirects=<span class="hljs-literal">True</span>)<br>        redirected_url = response.url<br>        <span class="hljs-keyword">try</span>:<br>            matches = re.findall(self.pattern, redirected_url)<br>            <span class="hljs-keyword">if</span> matches:<br>                aweme_id = matches[<span class="hljs-number">0</span>]<br>            <span class="hljs-keyword">else</span>:<br>                aweme_id = <span class="hljs-literal">None</span><br>        <span class="hljs-keyword">except</span> re.error <span class="hljs-keyword">as</span> id_error:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Error:&quot;</span>, id_error)<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br>        <span class="hljs-keyword">return</span> aweme_id<br>    <span class="hljs-keyword">except</span> requests.RequestException <span class="hljs-keyword">as</span> e:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Error:&quot;</span>, e)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br></code></pre></td></tr></table></figure>
 
-<h1 id="获取webid"><a href="#获取webid" class="headerlink" title="获取webid"></a>获取webid</h1><p>在全局搜索webid的值，可以找到其存在某些js文件当中，可以直接截取。</p>
+<h1 id="获取webid（无需）"><a href="#获取webid（无需）" class="headerlink" title="获取webid（无需）"></a>获取webid（无需）</h1><p>在全局搜索webid的值，可以找到其存在某些js文件当中，可以直接截取。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_webid</span>(<span class="hljs-params">self</span>):<br>    headers = &#123;<br>        <span class="hljs-string">&#x27;cookie&#x27;</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>        <span class="hljs-string">&#x27;user-agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) &#x27;</span><br>                      <span class="hljs-string">&#x27;Chrome/123.0.0.0 Safari/537.36&#x27;</span>,<br>    &#125;<br>    response = requests.get(self.webid_url, headers=headers)<br>    web_id = response.json()[<span class="hljs-string">&#x27;data&#x27;</span>][<span class="hljs-string">&#x27;frontier_params&#x27;</span>][<span class="hljs-string">&#x27;frontier_device&#x27;</span>]<br>    <span class="hljs-keyword">return</span> web_id<br></code></pre></td></tr></table></figure>
 
 <p>cookie太长了，可以去浏览器复制进去。</p>
@@ -449,6 +449,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/06/05/python-mysql-MysqldbErro/" title="python连接数据库时“No module named &#39;MySQLdb&#39;”错误">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">python连接数据库时“No module named &#39;MySQLdb&#39;”错误</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
