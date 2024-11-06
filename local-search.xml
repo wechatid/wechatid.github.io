@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>易班自动发帖的猴油脚本</title>
+    <link href="/2024/11/06/Yiban-JSmonkey/"/>
+    <url>/2024/11/06/Yiban-JSmonkey/</url>
+    
+    <content type="html"><![CDATA[<h1 id="易班自动发帖的猴油脚本"><a href="#易班自动发帖的猴油脚本" class="headerlink" title="易班自动发帖的猴油脚本"></a>易班自动发帖的猴油脚本</h1><p>发贴能获取5网薪，一天发20次能获得100+网薪和经验值。</p><p>本猴油脚本能够完全解放你的双手，实现自动输入内容，自动发布和自动识别验证码。</p><p>只需要打开页面，什么都不干，自动执行就好。</p><h2 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h2><p>1</p><h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p>2</p><h2 id="QQ群聊"><a href="#QQ群聊" class="headerlink" title="QQ群聊"></a>QQ群聊</h2><p>3</p><h2 id="卡密购买地址"><a href="#卡密购买地址" class="headerlink" title="卡密购买地址"></a>卡密购买地址</h2><p>4</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>猴油脚本</category>
+      
+      <category>js</category>
+      
+      <category>易班网薪</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>猴油脚本</tag>
+      
+      <tag>js</tag>
+      
+      <tag>易班网薪</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>基于fastapi实现带token登录注册并限制频繁登录</title>
     <link href="/2024/10/12/Fastapi-login/"/>
     <url>/2024/10/12/Fastapi-login/</url>
