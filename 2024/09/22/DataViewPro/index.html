@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gcore.jsdelivr.net/gh/wechatid/image/blog/dataviewCover.png">
 <meta property="article:published_time" content="2024-09-22T05:02:38.000Z">
-<meta property="article:modified_time" content="2024-09-22T09:48:09.663Z">
+<meta property="article:modified_time" content="2024-12-19T05:39:21.109Z">
 <meta property="article:author" content="Imscamd">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="html">
@@ -245,7 +245,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.4k 字
+          4.1k 字
         
       </span>
     
@@ -257,7 +257,7 @@
         
         
           <!-- compatible with older versions-->
-          20 分钟
+          35 分钟
         
       </span>
     
@@ -384,8 +384,315 @@
 <p>处理工单js代码</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> <span class="hljs-title class_">Main</span> = &#123;<br>  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> &#123;<br>      <span class="hljs-attr">tableData</span>: [],<br>      <span class="hljs-attr">loading</span>: <span class="hljs-literal">true</span><br>    &#125;<br>  &#125;,<br>  <span class="hljs-attr">methods</span>: &#123;<br>    <span class="hljs-title function_">tableRowClassName</span>(<span class="hljs-params">&#123;row, rowIndex&#125;</span>) &#123;<br>      <span class="hljs-keyword">if</span> (row.<span class="hljs-property">state</span>=== <span class="hljs-string">&quot;异常&quot;</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;warning-row&#x27;</span>;<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (row.<span class="hljs-property">state</span> === <span class="hljs-string">&quot;已完成&quot;</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;success-row&#x27;</span>;<br>      &#125;<br>      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;<br>    &#125;,<br><br>    <span class="hljs-keyword">async</span> <span class="hljs-title function_">loadData</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-keyword">const</span> abnormals = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetchAbnormals</span>();<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">tableData</span> = abnormals;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">loading</span> = <span class="hljs-literal">false</span>;<br>    &#125;,<br><br>&lt;!--    <span class="hljs-title function_">handleCheck</span>(<span class="hljs-params">index, row</span>) &#123;--&gt;<br>&lt;!--      <span class="hljs-keyword">if</span> (<span class="hljs-title function_">confirm</span>(<span class="hljs-string">`确定要修改 <span class="hljs-subst">$&#123;row.name&#125;</span> 的地址吗？`</span>)) &#123;--&gt;<br>&lt;!--        <span class="hljs-variable language_">this</span>.$set(<span class="hljs-variable language_">this</span>.<span class="hljs-property">tableData</span>, index, &#123; ...row, <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;步行街&#x27;</span> &#125;);--&gt;<br>&lt;!--        <span class="hljs-comment">// 执行编辑操作，这里可以添加异步操作--&gt;</span><br>&lt;!--      &#125;--&gt;<br>&lt;!--    &#125;,--&gt;<br><br>    <span class="hljs-keyword">async</span> <span class="hljs-title function_">handleEdit</span>(<span class="hljs-params">index, row</span>) &#123;<br>      <span class="hljs-keyword">var</span> upData = &#123;<br>        <span class="hljs-string">&quot;id&quot;</span>: row.<span class="hljs-property">id</span>,<br>        <span class="hljs-string">&quot;device_id&quot;</span>: row.<span class="hljs-property">device_id</span>,<br>        <span class="hljs-string">&quot;state&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,<br>        <span class="hljs-string">&quot;time&quot;</span>: row.<span class="hljs-property">time</span>,<br>        <span class="hljs-string">&quot;msg&quot;</span>: row.<span class="hljs-property">msg</span>,<br>        <span class="hljs-string">&quot;charge&quot;</span>: row.<span class="hljs-property">charge</span>,<br>        <span class="hljs-string">&quot;worker&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,<br>        <span class="hljs-string">&quot;repair_time&quot;</span>: <span class="hljs-string">&quot;&quot;</span><br>      &#125;;<br><br>      <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">editPop</span>(upData);<br>        <span class="hljs-keyword">if</span>(result)&#123;<br>          <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">loadData</span>();<br>        &#125;<br>      &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;编辑操作失败:&#x27;</span>, error);<br>      &#125;<br>    &#125;<br>  &#125;,<br><br>  <span class="hljs-title function_">mounted</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">loadData</span>();<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">var</span> <span class="hljs-title class_">Ctor</span> = <span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">extend</span>(<span class="hljs-title class_">Main</span>);<br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Ctor</span>().$mount(<span class="hljs-string">&#x27;#app&#x27;</span>);<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchAbnormals</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-keyword">const</span> url = <span class="hljs-string">`./abnormals/`</span>;<br>      <span class="hljs-keyword">return</span> <span class="hljs-title function_">fetch</span>(url, &#123;<br>        <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,<br>        <span class="hljs-attr">headers</span>: &#123;<br>          <span class="hljs-string">&#x27;Authorization&#x27;</span>: <span class="hljs-string">`Bearer <span class="hljs-subst">$&#123;<span class="hljs-variable language_">document</span>.cookie.replace(/(?:(?:^|.*;\s*)access_token\s*\=\s*([^;]*).*$)|^.*$/, <span class="hljs-string">&quot;$1&quot;</span>)&#125;</span>`</span><br>        &#125;<br>      &#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) &#123;<br>          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`HTTP error! status: <span class="hljs-subst">$&#123;response.status&#125;</span>`</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> response.<span class="hljs-title function_">json</span>();<br>      &#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching abnormals:&#x27;</span>, error);<br>        <span class="hljs-keyword">return</span> [];<br>      &#125;);<br>      &#125;<br></code></pre></td></tr></table></figure>
 
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h3 id="业务流程逻辑图"><a href="#业务流程逻辑图" class="headerlink" title="业务流程逻辑图"></a>业务流程逻辑图</h3><hr>
+<iframe frameborder="0" style="width:100%;height:833px;" src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=workview.html#R%3Cmxfile%3E%3Cdiagram%20name%3D%22%E7%AC%AC%201%20%E9%A1%B5%22%20id%3D%22Bf8KoO78H-Cl1FSngFr1%22%3E7Vxbc6M2FP41ekwHdAH0CDZpp%2B3ObCcPu33aIYa16WLLxTi3X18dLnYESkJqg8h4XxI4SALOd%2B5HGJHZ%2BuHXPNquPok4yRC24gdE5ghj27Is%2BQ8ojxWFUVIRlnka14OOhJv0KWlm1tR9Gic7ZWAhRFakW5W4EJtNsigUWpTn4l4d9l1k6l230TLpEG4WUdalfknjYlVRPewe6b8l6XLV3Nl2eHVlHTWD6zfZraJY3D8jkRCRWS5EUR2tH2ZJBsxr%2BFLNu37h6uHB8mRT9JlQ%2FPWN%2FrHYLj5fh1%2BKp%2FnvPz59vb2qH3ZXPDYvnMTy%2FetTkRcrsRSbKAuP1CAX%2B02cwKqWPDuO%2BVOIrSTakvhPUhSPNZjRvhCStCrWWX1VPnD%2B%2BBXm%2F8Ka07%2Fr5cqT%2BYNy9lifVc8KD%2FgiCxoRifJlUrzy3u4BACm5iVgn8j5yXp5kUZHeqetHtQgtD%2BMOUz%2BLVN4ZW7W4M8upptTCTghTl9iJfb5I6llHrOTBs8c4kkoE34FmozTjwnlGWLxhYPEMw%2BJMG5bq9V95ATYILJhjBRbmWuoSlbgMBgs1oi3DG79%2BcPbQRsJPxF1B7L3w1E95F2X7%2Bk4o5Mj3kTdDoYf8a%2BTZKHQR5ygIUMhQMEecoZCi4Br58pIDA%2BSwNsj5Sqxv9%2FJxg%2FtVWiQ326jk1r0MYHQadJfkRfLwOtO7PKonEE%2BVcerUQnd%2FDCYa0upZHOFYA3HVdj%2B4LXIGsUWua9gW2SZgmYAtcj6ELXJ62SIHBQT5HtgiGXHApUnZIodMzRbRCxV6t6fQnxp3nYSOq5H5jrftyPMBHXsc%2F9qy20Qj055GpslgMt3lyWXItNdTpk%2F13yeh42lkumO1Tcu0g6cm07wP28DHeYhbJcVHvOvsJEsKlVtRli438nghWZPkkgCMSxdR5tcX1mkcVyqS7NKn6LZcCiR3C5FY%2BaIsQGwOa0mt2FUKAkvvilz8SGYiE3Ld%2BUZsYJXvaZa1SOcArJXIUsfrAOaOCRg2Ek2e0Zg8K5CeM8q3GVeAckaO8hvF%2FomLigvhhnGxugYOOxkYq9022iiIOf%2FuoWIfgDG7Avt%2FtRaxvOTLURtRO4TjMHm0LP8fYycOB9JmagxmdU%2F5DtVt66mmHRKmKjyH5NiUQ8JE45A8yLU4BW7yAPGwkOZ%2FczE%2BqG3aGOv6oHExoj8xaicreGoYGW7%2FGUpVcN8COD61H3USOuSjl2rxMH2jlqVz2%2BoxdLCgaUycPVhgKHCRz8rQoGprMORT5NEyjrDK8MGFDCwoIwv5d7rhg22%2FEN2ZMnvEbOPPNmX2%2BtbazZo9rCm2n12%2FHNCpwCpj8Dnyw1LRrqFCD%2BV8t9QvBlUN7tSqJ4mglTYMm6iiEUetQ5hXtA9fhxhmQwptBYIeG9eFESNF6unj0k6ixsYF6%2BrT7T5jlTNBBmVB%2FaAqxEKEIE2ZBWaqY4ZG7DFi0grOWD8T5A1mgrCGpRQFHtj9LhMvNRV1NSVrXS94OFehKemc3etz0BCvKrjJoNnXNTQn6tq9FyyTMdc%2BRpTWLheVNi5s8iIZrhHdFotpItjOgswjqHE2JvLYqeL1QpXBGFy6JmyV%2BZMyn5nrWq5jc41yorDNeKuA6vx%2FKYMylQMDQ0E8L8XtU4cq8Og61WxUeHSdnIuFh00OHl0Tp08j80IAw%2FxtwEbd%2BUF1u%2BY9cMIyv4GDOfJnul3zHGKooDyQnsTHxj2J226WGfckRtoxE9jZR%2FvWjelA1TKLKZJgtzckD703X7f7WyrOrE4loVxsPl4ljsol0%2BkF1e%2B1lHksxKsH9kneYTgOSzrsopeWSMa0Xn1Jjn9vsT7gpbErxwTdVo9pYGxsGBlmd5ExYNnOaaH6bj6mp35F0s9C4Z771942de0C9MBfqjJyqT6O95Qghk%2BUoNNU1%2FvomjqMArbbDmTkPSFUV5x5oXHjgHMD31U2H%2FyqvzwvPZ6kzGBPfcdljfnFaisHtbnGXdlddzVYB4fpKjjDhw2woFNealIj04EEs1xVyI0HErrqQCPVl1ICoI5qemzeLQHQUVHRdWbaTmMT%2B%2FDjOMD9LNrt0oUKjeoy%2Btv%2F%2F%2FtF4xv1rYZ2bi9B%2B0VX3YVa%2BwTIyN8rMN23mY1fuRTFI9ZoiidPj7%2FTVIF4%2FLUrEv4H%3C%2Fdiagram%3E%3C%2Fmxfile%3E"></iframe>
 
-
+<hr>
+<h4 id="功能-接口测试用例"><a href="#功能-接口测试用例" class="headerlink" title="功能&#x2F;接口测试用例"></a>功能&#x2F;接口测试用例</h4><p>PS: 需求分析文档在c221机房p28电脑；张家振6&#x2F;27总结报告已提交</p>
+<table>
+<thead>
+<tr>
+<th>测试序号</th>
+<th>测试标题</th>
+<th>测试模块</th>
+<th>优先级</th>
+<th>前置条件</th>
+<th>测试步骤</th>
+<th>测试数据</th>
+<th>预期结果</th>
+<th>实际结果</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>work_view_001</td>
+<td>注册功能-合法用户名注册</td>
+<td>注册模块</td>
+<td>p0</td>
+<td>无</td>
+<td>输入长度为17位的用户名、密码、邮箱进行注册</td>
+<td><a href="mailto:user123@example.com">用户名：user1234567890000      密码：password123      邮箱：123@qq.com</a></td>
+<td>注册失败，提示用户名过长</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_002</td>
+<td>注册功能-合法用户名注册</td>
+<td>注册模块</td>
+<td>p0</td>
+<td>无</td>
+<td>输入合法用户名、密码、邮箱进行注册</td>
+<td><a href="mailto:user123@example.com">用户名：user123，密码：password123，邮箱：123@qq.com</a></td>
+<td>注册成功，跳转到登录页面</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_003</td>
+<td>注册功能-用户名已存在</td>
+<td>注册模块</td>
+<td>p1</td>
+<td>已存在用户名为user123的账户</td>
+<td>输入已存在的用户名user123进行注册</td>
+<td>用户名：user123，密码：newpassword123</td>
+<td>提示用户名已存在，注册失败</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_004</td>
+<td>注册功能-密码长度不足</td>
+<td>注册模块</td>
+<td>p1</td>
+<td>无</td>
+<td>输入合法用户名，但密码长度不足6位进行注册</td>
+<td>用户名：user456，密码：123</td>
+<td>提示密码长度不足，注册失败</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_005</td>
+<td>注册功能-邮箱格式错误</td>
+<td>注册模块</td>
+<td>p1</td>
+<td>无</td>
+<td>输入合法用户名，但邮箱格式错误进行注册</td>
+<td>用户名：user789，密码：password123，邮箱：user789@</td>
+<td>提示邮箱格式错误，注册失败</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_006</td>
+<td>登录功能-正确用户名密码登录</td>
+<td>登录模块</td>
+<td>p0</td>
+<td>已注册用户名为user123的账户</td>
+<td>输入正确的用户名user123和密码password123进行登录</td>
+<td>用户名：user123，密码：password123</td>
+<td>登录成功，跳转到主页</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_007</td>
+<td>登录功能-用户名不存在</td>
+<td>登录模块</td>
+<td>p1</td>
+<td>无</td>
+<td>输入不存在的用户名进行登录</td>
+<td>用户名：nonexistentuser，密码：password123</td>
+<td>提示用户名不存在，登录失败</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_008</td>
+<td>登录功能-密码错误</td>
+<td>登录模块</td>
+<td>p0</td>
+<td>已注册用户名为user123的账户</td>
+<td>输入正确的用户名但错误的密码进行登录</td>
+<td>用户名：user123，密码：wrongpassword</td>
+<td>提示密码错误，登录失败</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_009</td>
+<td>登录功能-密码为空</td>
+<td>登录模块</td>
+<td>p1</td>
+<td>已注册用户名为user123的账户</td>
+<td>输入正确的用户名但密码为空进行登录</td>
+<td>用户名：user123，密码：</td>
+<td>提示密码不能为空，登录失败</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_010</td>
+<td>工单处理-创建新工单</td>
+<td>工单处理模块</td>
+<td>p0</td>
+<td>数据采集成功</td>
+<td>输入设备id，工单内容，时间，主管，维修工作人员，维修时间</td>
+<td>{“device_id”:  “1”, “state”: “0”, “time”:  “2024&#x2F;6&#x2F;19  20:00”,”msg”:”ts”,”charge”:”张家振”,”worker”:”张家振”,”repair_time”:”2024&#x2F;6&#x2F;19  21:00”}</td>
+<td>工单创建成功，显示在工单列表中</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_011</td>
+<td>工单处理-维修人员为空</td>
+<td>工单处理模块</td>
+<td>p0</td>
+<td>数据采集成功</td>
+<td>输入设备id，工单内容，时间，主管，维修时间</td>
+<td>{“device_id”:  “1”, “state”: “0”, “time”:  “2024&#x2F;6&#x2F;19  20:00”,”msg”:”ts”,”charge”:”张家振”,”worker”:””,”repair_time”:”2024&#x2F;6&#x2F;19  21:00”}</td>
+<td>提示维修人员不能为空，工单创建失败</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_012</td>
+<td>工单处理-工单描述为空</td>
+<td>工单处理模块</td>
+<td>p0</td>
+<td>数据采集成功</td>
+<td>输入设备id，，时间，主管，维修工作人员，维修时间</td>
+<td>{“device_id”:  “1”, “state”: “0”, “time”:  “2024&#x2F;6&#x2F;19  20:00”,”msg”:””,”charge”:”张家振”,”worker”:”张家振”,”repair_time”:”2024&#x2F;6&#x2F;19  21:00”}</td>
+<td>提示描述不能为空，工单创建失败</td>
+<td>不通过</td>
+<td>忘记写了，今晚补&#x2F;二测通过</td>
+</tr>
+<tr>
+<td>work_view_013</td>
+<td>工单处理-修改维修人员信息</td>
+<td>工单处理模块</td>
+<td>p1</td>
+<td>用户已登录且存在待修改工单</td>
+<td>输入设备id，工单内容，时间，主管，维修工作人员，维修时间</td>
+<td>{“device_id”:  “1”, “state”: “0”, “time”:  “2024&#x2F;6&#x2F;19  20:00”,”msg”:”ts”,”charge”:”张家振”,”worker”:”陈”,”repair_time”:”2024&#x2F;6&#x2F;19  21:00”}</td>
+<td>工单信息修改成功，显示在工单列表中</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_015</td>
+<td>API接口-注册接口-合法数据提交</td>
+<td>API接口</td>
+<td>p0</td>
+<td>无</td>
+<td>使用Postman向注册接口提交合法数据</td>
+<td><a href="mailto:user1001@example.com">数据：{“username”: “user1001”,   “password”: “password1001”, “email”: “test001@qq.com"}</a></td>
+<td>返回成功响应，包含用户信息和token</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_016</td>
+<td>API接口-注册接口-用户名已存在</td>
+<td>API接口</td>
+<td>p1</td>
+<td>已存在用户名为user1001的账户</td>
+<td>使用Postman向注册接口提交已存在的用户名</td>
+<td><a href="mailto:user1001@example.com">数据：{“username”: “user1001”,   “password”: “newpassword1001”, “email”: “test001@qq.com"}</a></td>
+<td>返回错误响应，提示用户名已存在</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_017</td>
+<td>API接口-登录接口-正确用户名密码</td>
+<td>API接口</td>
+<td>p1</td>
+<td>已注册用户名为user1001的账户</td>
+<td>使用Postman向登录接口提交正确的用户名和密码</td>
+<td>数据：{“username”:  “user1001”, “password”: “password1001”}</td>
+<td>返回成功响应，包含token</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_018</td>
+<td>API接口-登录接口-用户名不存在</td>
+<td>API接口</td>
+<td>p1</td>
+<td>无</td>
+<td>使用Postman向登录接口提交不存在的用户名</td>
+<td>数据：{“username”:  “nonexistentuser”, “password”: “password1001”}</td>
+<td>返回错误响应，提示用户名不存在</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_019</td>
+<td>API接口-登录接口-密码错误</td>
+<td>API接口</td>
+<td>p1</td>
+<td>已注册用户名为user1001的账户</td>
+<td>使用Postman向登录接口提交正确的用户名但错误的密码</td>
+<td>数据：{“username”:  “user1001”, “password”: “wrongpassword1001”}</td>
+<td>返回错误响应，提示密码错误</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_020</td>
+<td>API接口-工单创建接口-合法数据提交</td>
+<td>API接口</td>
+<td>p1</td>
+<td>用户已登录且拥有token</td>
+<td>使用Postman向工单创建接口提交合法数据，附带token</td>
+<td>数据：{“device_id”:  “1”, “state”: “0”, “time”:  “2024&#x2F;6&#x2F;19  20:00”,”msg”:”ts”,”charge”:”张家振”,”worker”:”张家振”,”repair_time”:”2024&#x2F;6&#x2F;19  21:00”}     Header: {”cookie“:      ”access_token&#x3D;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjAiLCJleHAiOiIxNzM0NTg3MTM3In0.vIlA1Bea84zUe7TNT3fxwwS2kV_hy934sgXUgbmvbgI“}</td>
+<td>返回成功响应，包含工单ID</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_021</td>
+<td>API接口-工单创建接口-标题为空</td>
+<td>API接口</td>
+<td>p0</td>
+<td>用户已登录且拥有token</td>
+<td>使用Postman向工单接口”.&#x2F;abnormals&#x2F;“创建接口提交空维修人员的数据，附带token</td>
+<td>数据：     {“device_id”: “1”, “state”: “0”,  “time”: “2024&#x2F;6&#x2F;19  20:00”,”msg”:””,”charge”:”张家振”,”worker”:””,”repair_time”:”2024&#x2F;6&#x2F;19  21:00”},      Header: {”cookie“:      ”access_token&#x3D;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjAiLCJleHAiOiIxNzM0NTg3MTM3In0.vIlA1Bea84zUe7TNT3fxwwS2kV_hy934sgXUgbmvbgI“}</td>
+<td>返回错误响应，提示维修人员不能为空</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_022</td>
+<td>API接口-工单获取接口-合法token</td>
+<td>API接口</td>
+<td>p0</td>
+<td>用户已登录且拥有token</td>
+<td>使用Postman向工单接口”.&#x2F;abnormals&#x2F;“获取接口发送请求，附带token</td>
+<td>Header:  {”cookie“:      ”access_token&#x3D;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjAiLCJleHAiOiIxNzM0NTg3MTM3In0.vIlA1Bea84zUe7TNT3fxwwS2kV_hy934sgXUgbmvbgI“}</td>
+<td>返回成功响应，包含用户创建的工单列表</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_023</td>
+<td>API接口-工单获取接口-无效token</td>
+<td>API接口</td>
+<td>p0</td>
+<td>无</td>
+<td>使用Postman向工单获取接口”.&#x2F;updata&#x2F;“发送请求，附带无效token</td>
+<td>Header:  {”cookie“:     ”access_token&#x3D;eyJhbGciOiJgI“}</td>
+<td>返回错误响应，提示token无效</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_024</td>
+<td>API接口-工单修改接口-工单不存在</td>
+<td>API接口</td>
+<td>p0</td>
+<td>用户已登录且拥有token</td>
+<td>使用Postman向工单修改接口提交不存在的工单ID</td>
+<td>数据：{“id”: 9999,  “title”: “不存在的工单”, “description”: “这是一个不存在的工单”,  “priority”: “高”}, Header: {”cookie“:      ”access_token&#x3D;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjAiLCJleHAiOiIxNzM0NTg3MTM3In0.vIlA1Bea84zUe7TNT3fxwwS2kV_hy934sgXUgbmvbgI“}</td>
+<td>返回错误405响应</td>
+<td>通过</td>
+<td></td>
+</tr>
+<tr>
+<td>work_view_025</td>
+<td>API接口-根域名请求头cookie登录状态检测-已登录</td>
+<td>API接口</td>
+<td>p0</td>
+<td>用户已登录且拥有有效的cookie</td>
+<td>使用浏览器或Postman向根域名发送请求，附带有效的cookie</td>
+<td>Header: {”cookie“:      ”access_token&#x3D;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjAiLCJleHAiOiIxNzM0NTg3MTM3In0.vIlA1Bea84zUe7TNT3fxwwS2kV_hy934sgXUgbmvbgI“}</td>
+<td>返回成功响应，</td>
+<td>通过</td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上就是数据采集与可视化监控工单处理系统——炼铁高炉项目的主要内容，还有一些没有写出来的主要是因为重复性较高的，写出来没有什么意义。如果有需要的话，可以去我的github上点个小星星下载到本地运行，谢谢。</p>
 <h2 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h2><p>最后，非常感谢您的看到最后！</p>
 <p>仓库地址：<a target="_blank" rel="noopener" href="https://github.com/wechatid/WorkOdrderSystem">wechatid&#x2F;WorkOdrderSystem: 数据可视化与工单处理系统-炼铁高炉 (github.com)</a></p>
